@@ -31,6 +31,16 @@ class ImportCSV implements ShouldQueue
      */
     public function handle()
     {
-        //
+        \DB::connection()->getPdo()
+            ->exec("
+            LOAD DATA LOCAL INFILE '{$this->filePath}'
+            INTO TABLE productos
+            FIELDS TERMINATED BY ','
+            IGNORE 1 ROWS
+            (
+              `nombre`, `referencia`, `precio`,
+              `costo`, `unidades`, `estado`
+            ) 
+            ");
     }
 }
