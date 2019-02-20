@@ -10,6 +10,6 @@ class ProductController extends Controller
     public function listProducts()
     {
         $products = DB::table('productos')->get();
-        return view('products', ['productos' => $vacaciones]);
+        return view('products', ['productos' => $products]);
     }
 }
