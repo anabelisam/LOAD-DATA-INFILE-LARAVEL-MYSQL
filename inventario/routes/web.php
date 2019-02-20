@@ -12,4 +12,7 @@
 */
 Route::get('/listProducts', 'ProductController@listProducts');
 
-
+Route::get('/csv', function (){  
+    $path = public_path('testing.csv');
+    dispatch(new \App\Jobs\ImportCsv($path));
+});
